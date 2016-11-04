@@ -1,0 +1,36 @@
+<template>
+
+<div class="game-card">
+  
+  
+  <p id="text" if.bind="text">
+    <compose view-model="./../interpolator"
+              model.bind="{ state : state.storyData , template : text }">
+    </compose>
+  </p>
+
+
+  <div class="img-container" if.bind ="imagePath">
+    <img src.bind="imagePath" />
+  </div>
+  
+  <form>
+  
+  <div if.bind="input.length > 0">
+    <!-- variable name is input[0] -->
+    <input id="input" type="text" value.bind="inputVal"
+     placeholder.bind="input[1]"/>
+  </div>
+  
+  <div id="buttonBox">
+
+    <button repeat.for="b of buttons" click.trigger="goToPage(b[1])" type="submit">
+      ${b[0]}
+    </button>
+
+  </div>
+  </form>
+
+</div>
+
+</template>

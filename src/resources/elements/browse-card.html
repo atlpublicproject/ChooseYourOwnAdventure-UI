@@ -1,0 +1,23 @@
+   
+<template bindable="cover">
+    <div class="browse-card">
+        <line class="big">${cover.title}</line>
+        <div  class="small">
+        ${cover.description}
+        <div class="soft">
+        ${cover.pageCount} Pages
+
+        <tag repeat.for="tag of g.tags">
+            ${cover.tag}        
+        </tag>
+        </div>
+
+        </div>
+
+        <line class="tiny">
+        <tag class="flush-left">${cover.slug}</tag> 
+        <tag class="flush-left">${cover.authors}</tag> 
+        </line>
+        
+    </div>
+</template>

@@ -1,0 +1,18 @@
+<template>
+
+  <h1 class="clickable" click.trigger="goToHome()">App Home</h2>
+
+  <h2>${message}</h1>
+
+
+  <router-view></router-view>
+
+
+  <require from="app.css"></require>
+
+  <br />
+  <div if.bind="!!selectedStory" class="unfocus">
+    <browse-card cover.one-way="selectedStory"></browse-card>
+  </div>
+
+</template>

@@ -1,0 +1,13 @@
+<template>
+  
+  <h3> What Game will You Play Next? </h3>
+ 
+  <div repeat.for="g of covers" 
+    click.trigger="goToGame(g)"
+    class="clickable">
+
+    <browse-card cover.one-way="g"></browse-card>
+
+  </div>
+
+</template>
