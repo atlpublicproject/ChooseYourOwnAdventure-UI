@@ -71,7 +71,7 @@ export class Api {
     return new Promise(resolve => {
       setTimeout(() => {
 
-        this.http.fetch(`s/${storySlug}/all`)
+        this.http.fetch(`s/${storySlug}`)
           //.catch( error => alert( error ))
           .then( response => response.json() )
           .then( data => {

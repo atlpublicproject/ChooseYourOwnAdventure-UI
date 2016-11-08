@@ -1,9 +1,11 @@
 import { Router, RouterConfiguration} from 'aurelia-router';
 import { Page, Story } from './../objects/objects';
+import { StoryHelper } from './../objects/story-helper';
 import { Api } from './../api';
 import { inject } from 'aurelia-framework';
 import { State } from './../state';
 import { EventAggregator } from 'aurelia-event-aggregator';
+import environment from './../environment';
 
 @inject( Router, Api, State, EventAggregator )
 export class Play {
@@ -59,7 +61,8 @@ export class Play {
     page = params.page;
     this.setPageData(page);    
 
-    this.eventAggregator.publish("SelectStory", this.story.cover);
+    let header = StoryHelper.toHeader( this.story );
+    this.eventAggregator.publish("SelectStory", header);
  }
 
  setPageData( pageNum : number ){
@@ -89,10 +92,13 @@ export class Play {
 
  setImagePath(){
 
-   if ( this.image.indexOf("www.") > -1 ){
+   if (this.image == null ){
+     this.imagePath = null;
+   } else if ( this.image.indexOf("www.") > -1 ){
      this.imagePath = this.image;
    }else if (this.image){
-     this.imagePath = 'images/' + this.image;
+     let apiBase = environment.apiBase;
+     this.imagePath = apiBase + '/i/' + this.state.story.slug + '/' + this.image;
    }else{
      this.imagePath = null;
    }

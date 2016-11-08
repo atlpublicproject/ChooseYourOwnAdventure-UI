@@ -135,6 +135,11 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
+          },
+          {
+            "name": "underscore",
+            "path": "../node_modules/underscore/",
+            "main": "underscore"
           }
         ]
       }

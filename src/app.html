@@ -1,8 +1,15 @@
 <template>
 
-  <h1 class="clickable" click.trigger="goToHome()">App Home</h2>
+  <h2 class="clickable" click.trigger="goToHome()">
+    ${message} App Home 
+  </h2>
 
-  <h2>${message}</h1>
+  <div if.bind="!!selectedStory">
+    <h3 click.trigger="showCover =! showCover" class="clickable">
+      Selected : ${ selectedStory.title }
+    </h3>    
+    <browse-card show.bind="showCover" cover.one-way="selectedStory"></browse-card>
+  </div>
 
 
   <router-view></router-view>
@@ -10,9 +17,5 @@
 
   <require from="app.css"></require>
 
-  <br />
-  <div if.bind="!!selectedStory" class="unfocus">
-    <browse-card cover.one-way="selectedStory"></browse-card>
-  </div>
 
 </template>
